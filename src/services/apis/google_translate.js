@@ -10,29 +10,25 @@ const translate = new Translate({
     projectId: CREDENTIALS.project_id
 });
 
-const detectLanguage = async (text) => {
+// const detectLanguage = async (text) => {
 
-    try {
-        let response = await translate.detect(text);
-        return response[0].language;
-    } catch (error) {
-        console.log(`Error at detectLanguage --> ${error}`);
-        return 0;
-    }
-}
+//     try {
+//         let response = await translate.detect(text);
+//         console.log(response[0].language);
+//         return response[0].language;
+//     } catch (error) {
+//         console.log(`Error at detectLanguage --> ${error}`);
+//         return 0;
+//     }
+// }
 
-// detectLanguage('Oggi è lunedì')
-//     .then((res) => {
-//         console.log(res);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     });
+// detectLanguage('Oggi è lunedì'); uncomment to test the function. should return "it" which stands for italian. 
 
 const translateText = async (text, targetLanguage) => {
 
     try {
         let [response] = await translate.translate(text, targetLanguage);
+        console.log(response);
         return response;
     } catch (error) {
         console.log(`Error at translateText --> ${error}`);
@@ -40,10 +36,7 @@ const translateText = async (text, targetLanguage) => {
     }
 };
 
-translateText('Oggi è lunedì', 'en')
-    .then((res) => {
-        console.log(res);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+// translateText('how are you', 'ja'); uncomment to test the function
+
+// export default translateText; this gives --> SyntaxError: Unexpected token 'export'
+module.exports = translateText;
