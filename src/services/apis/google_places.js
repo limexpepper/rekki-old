@@ -2,9 +2,8 @@ const axios = require('axios'); // Import the Axios library
 require('dotenv').config({ path: '../../.env' }); //The ../../ part of the path indicates that you are going up two directories.
 const apiKey=process.env.REACT_APP_GOOGLE_PLACES_API_KEY;
 
-const searchQuery = '東京のカツ丼'; 
-
-const performTextSearch = async () => {
+const performTextSearch = async (text) => {
+    const searchQuery = text; 
     try {
       const apiUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(searchQuery)}&key=${apiKey}`;
       const response = await axios.get(apiUrl);
@@ -20,8 +19,12 @@ const performTextSearch = async () => {
       console.error('Error:', error.message);
     }
   };
+
+  // performTextSearch('cafes in new york');
+  // performTextSearch('東京のカツ丼'); // katsu don in tokyo
+
+  module.exports = performTextSearch;
   
-  performTextSearch();
 
 // const fetchPlaceData = async (apiKey) => {
 //     try {
