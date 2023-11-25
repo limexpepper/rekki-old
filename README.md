@@ -1,3 +1,8 @@
+# Installations
+- npm install dotenv @google-cloud/translate
+
+# Credits
+- RajKKapadia for his tutorial and code for google translate
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

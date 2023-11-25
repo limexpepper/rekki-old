@@ -10,6 +10,19 @@ const translate = new Translate({
     projectId: CREDENTIALS.project_id
 });
 
+const translateText = async (text, targetLanguage) => {
+    try {
+        let [response] = await translate.translate(text, targetLanguage); // console.log("HERE --->" + response)
+        return response;
+    } catch (error) {
+        console.log(`Error at translateText --> ${error}`);
+        return 0;
+    }
+}; 
+//translateText('how are you', 'ja'); //uncomment to test the function
+
+module.exports = translateText;
+
 // const detectLanguage = async (text) => {
 
 //     try {
@@ -23,20 +36,3 @@ const translate = new Translate({
 // }
 
 // detectLanguage('Oggi è lunedì'); uncomment to test the function. should return "it" which stands for italian. 
-
-const translateText = async (text, targetLanguage) => {
-
-    try {
-        let [response] = await translate.translate(text, targetLanguage);
-        console.log(response);
-        return response;
-    } catch (error) {
-        console.log(`Error at translateText --> ${error}`);
-        return 0;
-    }
-};
-
-// translateText('how are you', 'ja'); uncomment to test the function
-
-// export default translateText; this gives --> SyntaxError: Unexpected token 'export'
-module.exports = translateText;

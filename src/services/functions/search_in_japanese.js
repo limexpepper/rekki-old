@@ -7,8 +7,9 @@ const language = {
 }
 
 async function searchInJapanese(text) {
+  const textt = text + " japan";
   try {
-    const translatedText = await translateText(text, language); 
+    const translatedText = await translateText(textt, language); 
     console.log("Translated Text------>>> " + translatedText);
     const results = await performTextSearch(translatedText);
     console.log(results);
